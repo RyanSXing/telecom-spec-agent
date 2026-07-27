@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "spec-copilot"
+version = "0.1.0"
+description = "Agentic RAG over public telecom specifications"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "google-adk>=1,<2",
+  "google-genai>=1,<2",
+  "httpx>=0.28,<1",
+  "langchain-core>=1,<2",
+  "llama-index-core>=0.14,<0.15",
+  "opensearch-py>=2,<4",
+  "pydantic-settings>=2,<3",
+  "python-docx>=1.1,<2",
+  "uvicorn[standard]>=0.34,<1",
+]
+
+[project.scripts]
+spec-copilot = "spec_copilot.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8,<10",
+  "pytest-asyncio>=0.25,<2",
+  "ruff>=0.11,<1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spec_copilot"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+markers = ["integration: requires local OpenSearch"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

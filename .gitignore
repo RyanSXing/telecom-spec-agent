@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.pnpm-store/
+.venv/
+.cache/
+.pytest_cache/
+.playwright-cli/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+
+data/
+eval/reports/
+
+web/.next/
+web/node_modules/
+web/.env.local
