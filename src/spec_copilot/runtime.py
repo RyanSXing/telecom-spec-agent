@@ -1,3 +1,4 @@
+import os
 from functools import lru_cache
 from pathlib import Path
 
@@ -46,6 +47,13 @@ def build_retriever(settings: Settings) -> tuple[HybridRetriever, OpenSearchStor
 
 
 def build_runtime(settings: Settings) -> tuple[AgentService, OpenSearchStore]:
+    if not settings.google_cloud_project:
+        raise DependencyUnavailable("GOOGLE_CLOUD_PROJECT is not configured")
+    os.environ.update(
+        GOOGLE_GENAI_USE_VERTEXAI="true",
+        GOOGLE_CLOUD_PROJECT=settings.google_cloud_project,
+        GOOGLE_CLOUD_LOCATION=settings.google_cloud_location,
+    )
     retriever, store = build_retriever(settings)
     pipeline = build_agent(retriever, model=settings.spec_copilot_model)
     return AgentService(pipeline), store

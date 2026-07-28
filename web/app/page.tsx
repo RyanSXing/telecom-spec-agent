@@ -20,7 +20,7 @@ type Answer = {
 
 const examples = [
   "What are service-based interfaces used for?",
-  "How is a serving AMF selected for requested network slices?",
+  "What is a QoS Flow?",
   "Summarize clause 4.2.6.",
 ];
 

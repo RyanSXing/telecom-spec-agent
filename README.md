@@ -46,9 +46,15 @@ The archive SHA-256 is
 `26a44ebac62fb954d8be7747eaade48c9bf5949867a078bf11c6a445fc0b7ace`.
 All eleven clauses referenced by the golden set were found by the real parser.
 
-Retrieval scores are intentionally not listed yet. Run the authenticated evaluation
-below and publish the resulting `eval/reports/latest.json`; do not substitute expected
-or resume-target values.
+The authenticated evaluation was run on July 27, 2026:
+
+| Golden questions | Recall@5 | MRR |
+| ---: | ---: | ---: |
+| 10 | 0.50 | 0.50 |
+
+These are measured baseline values from
+[`eval/reports/latest.json`](eval/reports/latest.json), not expected or resume-target
+scores.
 
 ## Prerequisites
 
@@ -102,7 +108,7 @@ pnpm --dir web dev
 Open [http://localhost:3000](http://localhost:3000). Useful demo questions:
 
 1. `What are service-based interfaces used for?`
-2. `How is a serving AMF selected for requested network slices?`
+2. `What is a QoS Flow?`
 3. `Summarize clause 4.2.6.`
 
 ## API
@@ -149,8 +155,7 @@ uv run spec-copilot eval
 
 The command evaluates recall@5 and mean reciprocal rank over
 `eval/golden_set.jsonl`, prints the report, and writes
-`eval/reports/latest.json`. Generated reports are ignored until someone explicitly
-reviews and publishes the measured values.
+`eval/reports/latest.json`. Publish the report only after reviewing a real run.
 
 ## Development checks
 

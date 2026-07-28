@@ -52,20 +52,24 @@ def build_langchain_tools(retriever: Any) -> tuple[StructuredTool, StructuredToo
 def capture_tool_result(
     tool: Any,
     args: dict[str, Any],
-    context: Any,
-    tool_response: dict[str, Any],
+    tool_context: Any,
+    tool_response: Any,
 ) -> None:
     del tool, args
-    result = tool_response.get("result", tool_response)
+    result = (
+        tool_response.get("result", tool_response)
+        if isinstance(tool_response, dict)
+        else tool_response
+    )
     if isinstance(result, str):
         try:
             result = json.loads(result)
         except json.JSONDecodeError:
             result = []
-    stored = json.loads(context.state.get("retrieval_context", "[]"))
+    stored = json.loads(tool_context.state.get("retrieval_context", "[]"))
     if isinstance(result, list):
         stored.extend(item for item in result if isinstance(item, dict))
-    context.state["retrieval_context"] = json.dumps(stored)
+    tool_context.state["retrieval_context"] = json.dumps(stored)
     return None
 
 
@@ -89,7 +93,9 @@ def build_agent(retriever: Any, *, model: str) -> SequentialAgent:
         description="Writes a structured answer using retrieved evidence only.",
         instruction=(
             "Answer the user's question using only the JSON evidence below. Cite the exact "
-            "chunk_id for every citation and copy quoted_span verbatim from that chunk. "
+            "chunk_id for every citation. Each quoted_span must be exactly one complete sentence "
+            "copied as a single contiguous substring from that chunk; never join or paraphrase "
+            "sentences. Prefer one to three short citations. "
             "If evidence is insufficient, use low confidence and name the missing aspect.\n\n"
             "Evidence:\n{retrieval_context}"
         ),

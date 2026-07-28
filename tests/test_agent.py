@@ -50,9 +50,17 @@ def test_langchain_tools_return_json_compatible_search_hits() -> None:
 
 def test_capture_tool_result_appends_raw_context_to_session_state() -> None:
     context = SimpleNamespace(state={"retrieval_context": "[]"})
-    response = {"result": [hit("amf", "6.2.1").model_dump()]}
+    response = [hit("amf", "6.2.1").model_dump()]
 
-    assert capture_tool_result(SimpleNamespace(), {}, context, response) is None
+    assert (
+        capture_tool_result(
+            tool=SimpleNamespace(),
+            args={},
+            tool_context=context,
+            tool_response=response,
+        )
+        is None
+    )
 
     stored = json.loads(context.state["retrieval_context"])
     assert stored[0]["chunk_id"] == "amf"
@@ -72,6 +80,7 @@ def test_build_agent_separates_tool_use_from_structured_output() -> None:
     assert isinstance(writer, LlmAgent)
     assert writer.tools == []
     assert writer.output_schema is Answer
+    assert "exactly one complete sentence" in writer.instruction
 
 
 def answer(quoted_span: str = "Text for 1") -> Answer:

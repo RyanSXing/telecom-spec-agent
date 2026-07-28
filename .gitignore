@@ -10,7 +10,6 @@ __pycache__/
 *.py[cod]
 
 data/
-eval/reports/
 
 web/.next/
 web/node_modules/

@@ -1,0 +1,159 @@
+{
+  "question_count": 10,
+  "recall_at_5": 0.5,
+  "mrr": 0.5,
+  "cases": [
+    {
+      "question": "What are service-based interfaces used for?",
+      "relevant_clauses": [
+        "4.2.6"
+      ],
+      "retrieved_clauses": [
+        "4.2.6",
+        "A",
+        "4.4.4.3",
+        "8.2.3.1",
+        "4.4.2.3"
+      ],
+      "recall_at_5": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "question": "What are the 5GS Registration Management states?",
+      "relevant_clauses": [
+        "5.3.2.2"
+      ],
+      "retrieved_clauses": [
+        "5.3.2.2.4",
+        "5.5.1",
+        "5.3.2.2.1",
+        "5.3.2.1",
+        "5.17.2.4"
+      ],
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null
+    },
+    {
+      "question": "What are SSC modes 1, 2, and 3?",
+      "relevant_clauses": [
+        "5.6.9.2.1",
+        "5.6.9.2.2",
+        "5.6.9.2.3"
+      ],
+      "retrieved_clauses": [
+        "5.6.9.2.2",
+        "5.6.9.2.3",
+        "5.6.9.2.1",
+        "5.6.9.1",
+        "5.6.9.3"
+      ],
+      "recall_at_5": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "question": "How does an S-NSSAI identify a network slice?",
+      "relevant_clauses": [
+        "5.15.2"
+      ],
+      "retrieved_clauses": [
+        "5.15.5.3",
+        "5.15.2.1",
+        "5.15.5.3",
+        "5.15.2.1",
+        "5.15.3"
+      ],
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null
+    },
+    {
+      "question": "How is a serving AMF selected for requested network slices?",
+      "relevant_clauses": [
+        "5.15.5.2"
+      ],
+      "retrieved_clauses": [
+        "5.15.5.2.1",
+        "5.15.5.2.1",
+        "5.15.5.2.1",
+        "5.15.5.2.1",
+        "5.15.5.2.1"
+      ],
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null
+    },
+    {
+      "question": "How is a PDU session established in a network slice?",
+      "relevant_clauses": [
+        "5.15.5.3"
+      ],
+      "retrieved_clauses": [
+        "5.15.5.3",
+        "5.15.5.3",
+        "8.3.1",
+        "5.15.5.1",
+        "5.30.2.10.3"
+      ],
+      "recall_at_5": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "question": "What is a QoS Flow?",
+      "relevant_clauses": [
+        "5.7.1.1"
+      ],
+      "retrieved_clauses": [
+        "5.7.1.1",
+        "5.7.1.5",
+        "5.7.1.5",
+        "5.7.1.2",
+        "5.8.2.7"
+      ],
+      "recall_at_5": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "question": "How is a User Plane Function selected?",
+      "relevant_clauses": [
+        "6.3.3"
+      ],
+      "retrieved_clauses": [
+        "6.3.3.3",
+        "5.30.2.10.3",
+        "6.3.3.1",
+        "5.29.4",
+        "5.29.4"
+      ],
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null
+    },
+    {
+      "question": "How does Network Function Service discovery work?",
+      "relevant_clauses": [
+        "7.1.3"
+      ],
+      "retrieved_clauses": [
+        "7.1.3",
+        "G.4.1",
+        "7.1.5",
+        "6.3.1.1",
+        "6.3.1"
+      ],
+      "recall_at_5": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "question": "Summarize clause 4.2.6.",
+      "relevant_clauses": [
+        "4.2.6"
+      ],
+      "retrieved_clauses": [
+        "8.2.3.1",
+        "5.16.4.2",
+        "5.3.3.2.5",
+        "4.3.1",
+        "5.3.3.3.3"
+      ],
+      "recall_at_5": 0.0,
+      "first_relevant_rank": null
+    }
+  ]
+}
